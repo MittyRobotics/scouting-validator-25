@@ -21,3 +21,23 @@ def calc_score(autoAmp, autoSpe, teleAmp, teleSpe, teleSpeAmp, trap, park, onsta
         teleSpe += teleSpeAmp
         score += (autoAmp*2) + (autoSpe*5) + (teleAmp) + (teleSpe*2) + trap + park + onstage
         return score
+
+blue_real = calc_score(data['score_breakdown']['blue']['autoAmpNoteCount'], 
+                        data['score_breakdown']['blue']['autoSpeakerNoteCount'],
+                        data['score_breakdown']['blue']['teleopAmpNoteCount'],
+                        data['score_breakdown']['blue']['teleopSpeakerNoteCount'],
+                        data['score_breakdown']['blue']['teleopSpeakerNoteAmplifiedCount'],
+                        data['score_breakdown']['blue']['endGameNoteInTrapPoints'],
+                        data['score_breakdown']['blue']['endGameParkPoints'],
+                        data['score_breakdown']['blue']['endGameOnStagePoints'])
+red_real = calc_score(data['score_breakdown']['red']['autoAmpNoteCount'], 
+                        data['score_breakdown']['red']['autoSpeakerNoteCount'],
+                        data['score_breakdown']['red']['teleopAmpNoteCount'],
+                        data['score_breakdown']['red']['teleopSpeakerNoteCount'],
+                        data['score_breakdown']['red']['teleopSpeakerNoteAmplifiedCount'],
+                        data['score_breakdown']['red']['endGameNoteInTrapPoints'],
+                        data['score_breakdown']['red']['endGameParkPoints'],
+                        data['score_breakdown']['red']['endGameOnStagePoints'])
+
+blueerror = ((blue_real - blue_recorded)/blue_recorded) * 100
+rederror = ((red_real - red_recorded)/red_recorded) * 100
