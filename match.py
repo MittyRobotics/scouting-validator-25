@@ -1,6 +1,4 @@
 import requests
-import fileinput
-import os
 import json
 
 matchnum = 77
