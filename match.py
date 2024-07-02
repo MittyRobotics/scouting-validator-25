@@ -15,6 +15,24 @@ red_real = 0
 blue_real = 0
 data = json.loads(json.dumps(tba.json()))
 
+#function to add values from our data (hope this works)
+def add_score(key, value):
+        score = 0
+        if(key in ['AUTONAMP', 'TELEOPSPEAKER']):
+            score += (int(value)*2)
+        if(key == 'AUTONSPEAKER'):
+            score += (int(value)*5)
+        if(key == 'TELEOPAMP'):
+            score += (int(value))
+        if(key == 'TRAP' and value == 'true'):
+            score += 5
+        if(key == 'ENDGAME'):
+            if(value == 'Parked'):
+                score += 1
+            if(value == 'Onstage'):
+                score += 3
+        return score
+
 #function to calculate score from official API 
 def calc_score(autoAmp, autoSpe, teleAmp, teleSpe, teleSpeAmp, trap, park, onstage):
         score = 0
